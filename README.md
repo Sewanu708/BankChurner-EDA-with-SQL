@@ -33,6 +33,7 @@ from bankchurner
 where Attrition_Flag='Attrited Customer'
 ```
 *output*
+
 <img width="310" alt="6" src="https://user-images.githubusercontent.com/99955484/189460776-7d84d325-6871-4e6b-9e01-df27603ce988.png">
 
 ### Contribution of each gender to attrition
@@ -148,6 +149,7 @@ where Education_Level='Doctorate'
 and Attrition_Flag='Attrited Customer'
 ```
 *Output*
+
 <img width="398" alt="Annotation 2022-09-11 042649" src="https://user-images.githubusercontent.com/99955484/189511100-a0f2d5f1-9931-451d-8a9d-d850728964c1.png">
 
 ##### Post-Graduate
@@ -160,6 +162,7 @@ where Education_Level='Post-Graduate'
 and Attrition_Flag='Attrited Customer'
 ```
 *Output*
+
 <img width="413" alt="Annotation 2022-09-11 042831" src="https://user-images.githubusercontent.com/99955484/189511127-d2803e47-3b1e-4375-a78d-ecf5c8012fdf.png">
 
 ##### Graduate
@@ -198,6 +201,7 @@ where Education_Level='High School'
 and Attrition_Flag='Attrited Customer'
 ```
 *Output*
+
 <img width="392" alt="Annotation 2022-09-11 043253" src="https://user-images.githubusercontent.com/99955484/189511252-80ee82f9-941b-4e45-9efa-f8b30dbed29d.png">
 
 ##### Uneduacted
@@ -211,6 +215,7 @@ and Attrition_Flag='Attrited Customer'
 
 ```
 *Output* 
+
 <img width="356" alt="Annotation 2022-09-11 043354" src="https://user-images.githubusercontent.com/99955484/189511291-8985b912-0dea-4790-9c67-684563d24176.png">
 
 ##### Unknown
@@ -221,6 +226,7 @@ where Education_Level='Unknown'
 and Attrition_Flag='Attrited Customer'
 ```
 *Output*
+
 <img width="323" alt="Annotation 2022-09-11 043603" src="https://user-images.githubusercontent.com/99955484/189511331-e2e296f0-c8e0-4c16-a0c3-4b974ae3aec0.png">
 
 **Insights**
