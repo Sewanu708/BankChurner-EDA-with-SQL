@@ -26,7 +26,7 @@ Behind the scene, I have my data loaded as **BankChurner** into a database calle
 ## Data Exploration 
 First of all let's check for the percentage of attrited customers and existing customers
 ### Percentage of attrited customers and existing customers
-```
+```SQL
 Select cast(((cast(count(Attrition_flag) as decimal(10,2))/(select count(*) from Bankchurner))*100) as decimal(10,2)) as [Attrited Customer Percentage],
 100-(cast(((cast(count(Attrition_flag) as decimal(10,2))/(select count(*) from Bankchurner))*100) as decimal(10,2))) as [Existing Customer Percentage]
 from bankchurner 
@@ -38,7 +38,7 @@ where Attrition_Flag='Attrited Customer'
 
 ### Gender
 **Contribution of each gender to attrition**
-```
+```SQL
 --Male
 select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='M'))*100) as decimal(10,2)) as [Attrited Male Customer],
 100-(cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='M'))*100) as decimal(10,2))) as [Existing Male Customer]
@@ -71,7 +71,8 @@ The marital status of each customer can either be
 
 let's see how they affect attrition.
 
-```--Contribution of marital status
+```SQL
+--Contribution of marital status
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2)) as [Attrited Married Customers],
 100-(cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2))) as [Existing Married Customers]
 from Bankchurner
@@ -109,7 +110,8 @@ and Attrition_Flag='Attrited Customer'
 Card category of an account holder can either be **Blue,Gold,Silver or Platinum**
 
 **Which Card have the highest amount of holders?**
-```select  Card_Category, COUNT(card_category)
+```SQL
+select  Card_Category, COUNT(card_category)
 from Bankchurner
 group by Card_Category
 order by 2 desc
@@ -121,7 +123,8 @@ order by 2 desc
 *Different cards are issued based on the annual income of an account holder.Those with very high income are given the paltinum card type while those with a very low income are given the Blue card.*
 
 **Percentage Contribution to attrition**
-```select cast((cast((select count(card_category) from Bankchurner where Card_Category='Silver' and Attrition_Flag='Attrited Customer') as decimal(10,2))/count(*))*100.00 as decimal(10,2)) as [Silver's Contribution to Attrition],
+```SQL
+select cast((cast((select count(card_category) from Bankchurner where Card_Category='Silver' and Attrition_Flag='Attrited Customer') as decimal(10,2))/count(*))*100.00 as decimal(10,2)) as [Silver's Contribution to Attrition],
 cast((cast((select count(card_category) from Bankchurner where Card_Category='Gold' and Attrition_Flag='Attrited Customer') as decimal(10,2))/count(*))*100.00 as decimal(10,2)) as [Gold's Contribution to Attrition],
 cast((cast((select count(card_category) from Bankchurner where Card_Category='Platinum' and Attrition_Flag='Attrited Customer') as decimal(10,2))/count(*))*100.00 as decimal(10,2)) as [Platinum's Contribution to Attrition],
 cast((cast((select count(card_category) from Bankchurner where Card_Category='Blue' and Attrition_Flag='Attrited Customer') as decimal(10,2))/count(*))*100.00 as decimal(10,2)) as [Blue card Contribution to Attrition]
@@ -149,7 +152,7 @@ Also, some customers education level is Unknown.
 
 **Which Eduacation_Level Contributes the most to attrition?**
 ##### Doctorate 
-```
+```SQL
 --Eduaction's Level
 select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Doctorate'))*100) as decimal(10,2)) as [Attrited Customers - Doctorate],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Doctorate'))*100) as decimal(10,2))) as [Existing Customers - Doctorate]
@@ -162,8 +165,7 @@ and Attrition_Flag='Attrited Customer'
 <img width="398" alt="Annotation 2022-09-11 042649" src="https://user-images.githubusercontent.com/99955484/189511100-a0f2d5f1-9931-451d-8a9d-d850728964c1.png">
 
 ##### Post-Graduate
-```
-
+```SQL
 select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Post-Graduate'))*100) as decimal(10,2)) as [Attrited Customers - Post-Graduate],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Post-Graduate'))*100) as decimal(10,2))) as [Existing Customers - Post-Graduate]
 from Bankchurner
@@ -175,7 +177,7 @@ and Attrition_Flag='Attrited Customer'
 <img width="413" alt="Annotation 2022-09-11 042831" src="https://user-images.githubusercontent.com/99955484/189511127-d2803e47-3b1e-4375-a78d-ecf5c8012fdf.png">
 
 ##### Graduate
-```
+```SQL
 select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Graduate'))*100) as decimal(10,2)) as [Attrited Customers - Graduate],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Graduate'))*100) as decimal(10,2))) as [Existing Customers - Graduate]
 from Bankchurner
@@ -188,7 +190,7 @@ and Attrition_Flag='Attrited Customer'
 <img width="536" alt="Annotation 2022-09-11 042931" src="https://user-images.githubusercontent.com/99955484/189511160-71169db1-d66f-4355-9caa-8d4432f16af7.png">
 
 ##### College
-```
+```SQL
 select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='College'))*100) as decimal(10,2)) as [Attrited Customers - College],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='College'))*100) as decimal(10,2))) as [Existing Customers - College]
 from Bankchurner
@@ -202,7 +204,7 @@ and Attrition_Flag='Attrited Customer'
 
 ##### High-School
 
-```
+```SQL
 select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='High School'))*100) as decimal(10,2)) as [Attrited Customers - High School],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='High School'))*100) as decimal(10,2))) as [Existing Customers - High School]
 from Bankchurner
@@ -214,8 +216,7 @@ and Attrition_Flag='Attrited Customer'
 <img width="392" alt="Annotation 2022-09-11 043253" src="https://user-images.githubusercontent.com/99955484/189511252-80ee82f9-941b-4e45-9efa-f8b30dbed29d.png">
 
 ##### Uneduacted
-```
-
+```SQL
 select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Uneducated'))*100) as decimal(10,2)) as [Attrited Customers - Uneducated],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Uneducated'))*100) as decimal(10,2))) as [Existing Customers - Uneducated]
 from Bankchurner
@@ -228,7 +229,8 @@ and Attrition_Flag='Attrited Customer'
 <img width="356" alt="Annotation 2022-09-11 043354" src="https://user-images.githubusercontent.com/99955484/189511291-8985b912-0dea-4790-9c67-684563d24176.png">
 
 ##### Unknown
-```select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Unknown'))*100) as decimal(10,2)) as [Attrited Customers - Unknown],
+```SQL
+select cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Unknown'))*100) as decimal(10,2)) as [Attrited Customers - Unknown],
 100-(cast(((cast(count(Education_Level) as decimal(10,2))/(select count(Education_Level) from Bankchurner where Education_Level='Unknown'))*100) as decimal(10,2))) as [Existing Customers - Unknown]
 from Bankchurner
 where Education_Level='Unknown'
@@ -245,7 +247,7 @@ and Attrition_Flag='Attrited Customer'
 ### Income Category
 This section deals with how the annual income category of account holders affect attrition.
 
-```
+```SQL
 select cast(((cast(count(Income_Category) as decimal(10,2))/(select count(Income_Category) from Bankchurner where Income_Category='Less than $40K'))*100) as decimal(10,2)) as [Attrited Customers - Post-Graduate],
 100-(cast(((cast(count(Income_Category) as decimal(10,2))/(select count(Income_Category) from Bankchurner where Income_Category='Less than $40K'))*100) as decimal(10,2))) as [Existing Customers - Post-Graduate]
 from Bankchurner
@@ -286,6 +288,7 @@ and Attrition_Flag='Attrited Customer'
 *Output*
 
 <img width="419" alt="Annotation 2022-09-11 045117" src="https://user-images.githubusercontent.com/99955484/189511659-821fdb95-5c65-4bcc-95c1-92b4ae50b401.png">
+
 
 
 
