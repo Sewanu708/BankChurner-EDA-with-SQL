@@ -68,7 +68,9 @@ The marital status of each customer can either be
 - **Married**
 - **Divorced** or
 - **Unknown**.
+
 let's see how they affect attrition.
+
 ```--Contribution of marital status
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2)) as [Attrited Married Customers],
 100-(cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2))) as [Existing Married Customers]
