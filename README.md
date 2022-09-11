@@ -1,6 +1,6 @@
-# BankChurner-EDA-with-SQL
-# Introduction 
-A business manager of a consumer credit card portfolio is facing the problem of customer churn. They want to analyze the data to find out the reasons this and know how each field of the provided dataset contributed to this.
+# BankChurner-EDA-with-SQL 
+A business manager of a consumer credit card portfolio is facing the problem of customer churn. They want to analyze the data to find out the reason behind this and leverage the same to predict customers who are likely to drop off.
+
 Customer churn or customer attrition is simply the rate at which customers stop doing business with an entity
 ## Goal of this Analysis
 *Based on the introduction, it’s clear that the goal of this data exploration is to find out the reason behind customer churn so as to prevent further attrition.*
@@ -38,14 +38,14 @@ where Attrition_Flag='Attrited Customer'
 
 ### Contribution of each gender to attrition
 ```
-Male
+--Male
 select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='M'))*100) as decimal(10,2)) as [Attrited Male Customer],
 100-(cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='M'))*100) as decimal(10,2))) as [Existing Male Customer]
 from Bankchurner
 where Gender='M'
 and Attrition_Flag='Attrited Customer'
 
-Female
+--Female
 select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='F'))*100) as decimal(10,2)) as [Attrited Female Customers],
 100-(cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='F'))*100) as decimal(10,2))) as [Existing Female Customers]
 from Bankchurner
@@ -53,6 +53,7 @@ where Gender='F'
 and Attrition_Flag='Attrited Customer'
 ```
 *output*
+
 <img width="282" alt="Annotation 2022-09-10 012659" src="https://user-images.githubusercontent.com/99955484/189461385-9c1d1e4e-f5c0-4d46-99c2-b49a24ff2329.png">
 
 
