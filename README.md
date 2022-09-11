@@ -36,7 +36,8 @@ where Attrition_Flag='Attrited Customer'
 
 <img width="310" alt="6" src="https://user-images.githubusercontent.com/99955484/189460776-7d84d325-6871-4e6b-9e01-df27603ce988.png">
 
-### Contribution of each gender to attrition
+### Gender
+**Contribution of each gender to attrition**
 ```
 --Male
 select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='M'))*100) as decimal(10,2)) as [Attrited Male Customer],
@@ -62,8 +63,12 @@ and Attrition_Flag='Attrited Customer'
 - The female gender contributed much more to attrition than the male gender and this shows that female gender are expected to churn more than the male gender
 
 ### How did Marital Status affects Churning?
-The marital status of each customer is either **Single,Married,Divorced or Unknown**.
-let's  see how they affect attrition.
+The marital status of each customer can either be
+- **Single**
+- **Married**
+- **Divorced** or
+- **Unknown**.
+let's see how they affect attrition.
 ```--Contribution of marital status
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2)) as [Attrited Married Customers],
 100-(cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2))) as [Existing Married Customers]
@@ -131,15 +136,16 @@ where Attrition_Flag='Attrited Customer'
 
 ### Eduation Level
 Based on this dataset, our customer's eduaction level can either be:
-- Doctorate,
-- Graduate,
-- Post-Graduate,
-- College,
+- Doctorate
+- Graduate
+- Post-Graduate
+- College
 - High School  
 - Uneducated.
+
 Also, some customers education level is Unknown.
 
-**Which Eduacation_Level Contributes the most to attrition?
+**Which Eduacation_Level Contributes the most to attrition?**
 ##### Doctorate 
 ```
 --Eduaction's Level
