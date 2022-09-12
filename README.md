@@ -1,9 +1,11 @@
 # BankChurner-EDA-with-SQL 
+## Problem Statement
 A business manager of a consumer credit card portfolio is facing the problem of customer churn. They want to analyze the data to find out the reason behind this and leverage the same to predict customers who are likely to drop off.
 
 Customer churn or customer attrition is simply the rate at which customers stop doing business with an entity
+
 ## Goal of this Analysis
-*Based on the introduction, it’s clear that the goal of this data exploration is to find out the reason behind customer churn so as to prevent further attrition.*
+*Based on the Problem Statement, it’s clear that the goal of this data exploration is to find out the reason behind customer churn so as to prevent further attrition.*
 ## Data Preparation and Understanding 
 Behind the scene, I have my data loaded as **BankChurner** into a database called ***creditbank***, Checked for nulls and duplicates of which none was found.
 
@@ -24,7 +26,9 @@ Behind the scene, I have my data loaded as **BankChurner** into a database calle
 - **Avg_Utilization_Ratio**: Average card utilization ratio
 
 ## Data Exploration 
-First of all let's check for the percentage of attrited customers and existing customers
+
+What's the percentage of attrited customers and existing customers?
+
 ### Percentage of attrited customers and existing customers
 ```SQL
 Select cast(((cast(count(Attrition_flag) as decimal(10,2))/(select count(*) from Bankchurner))*100) as decimal(10,2)) as [Attrited Customer Percentage],
@@ -293,12 +297,12 @@ and Attrition_Flag='Attrited Customer'
 Age is the length of time that a person has lived or a thing has existed. Overall spending tends to decrease as one gets older.
 
 The age of customers in this datasets range from 26 to 73. Due to this large range, i decided to group them into four categories 
-- 41-50
-- 30-40
 - <30
+- 30-40
+- 41-50
 - >50 
 
-I created a new columns called grouped age which stores the age category in which each age falls into. Below is the code used tO craete this column.
+I created a new columns called grouped age which stores the age category in which each age falls into. Below is the code used to craete this column.
 
 ```SQL
 
