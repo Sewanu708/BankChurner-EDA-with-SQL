@@ -73,7 +73,7 @@ and Attrition_Flag='Attrited Customer'
 - The female gender contributed much more to attrition than the male gender and this shows that female gender are expected to churn more than the male gender
 
 ### Marital Status
-*How did Marital Status affects Churning?*
+*How does Marital Status affects Churning?*
 The marital status of each customer can either be
 - **Single**
 - **Married**
