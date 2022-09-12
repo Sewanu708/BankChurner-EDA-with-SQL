@@ -207,6 +207,3 @@ and Attrition_Flag='Attrited Customer'
  --Dependent_count vs avg_utilization_ratio 
 select Dependent_count ,AVG(Avg_Utilization_Ratio) from Bankchurner where Attrition_Flag='Attrited Customer' GROUP BY Dependent_count order by 1
  
-
-
- select count(*) from Bankchurner
