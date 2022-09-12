@@ -42,6 +42,7 @@ where Attrition_Flag='Attrited Customer'
 
 ### Gender
 **Contribution of each gender to attrition**
+- Male
 ```SQL
 --Male
 select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='M'))*100) as decimal(10,2)) as [Attrited Male Customer],
@@ -49,24 +50,30 @@ select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Ba
 from Bankchurner
 where Gender='M'
 and Attrition_Flag='Attrited Customer'
+```
+*Output*
 
---Female
+<img width="245" alt="Annotation 2022-09-12 113838" src="https://user-images.githubusercontent.com/99955484/189634005-7099aaa4-2c49-45f4-9b06-cb420ee2b2fe.png">
+
+
+- Female
+```SQL
 select cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='F'))*100) as decimal(10,2)) as [Attrited Female Customers],
 100-(cast(((cast(count(Gender) as decimal(10,2))/(select count(gender) from Bankchurner where Gender='F'))*100) as decimal(10,2))) as [Existing Female Customers]
 from Bankchurner
 where Gender='F'
 and Attrition_Flag='Attrited Customer'
 ```
-*output*
+*Output*
 
-<img width="282" alt="Annotation 2022-09-10 012659" src="https://user-images.githubusercontent.com/99955484/189461385-9c1d1e4e-f5c0-4d46-99c2-b49a24ff2329.png">
-
+<img width="273" alt="Annotation 2022-09-12 114027" src="https://user-images.githubusercontent.com/99955484/189634136-43d5b6f5-cd0f-430d-bfc3-f15adb4f1187.png">
 
 **Insights**
 - 16% of 10127 customers haved churned
 - The female gender contributed much more to attrition than the male gender and this shows that female gender are expected to churn more than the male gender
 
-### How did Marital Status affects Churning?
+### Marital Status
+*How did Marital Status affects Churning?*
 The marital status of each customer can either be
 - **Single**
 - **Married**
@@ -75,6 +82,7 @@ The marital status of each customer can either be
 
 let's see how they affect attrition.
 
+- Married
 ```SQL
 --Contribution of marital status
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Married'))*100) as decimal(10,2)) as [Attrited Married Customers],
@@ -82,21 +90,38 @@ select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital
 from Bankchurner
 where Marital_Status='Married'
 and Attrition_Flag='Attrited Customer'
+```
+*Output*
+<img width="281" alt="Annotation 2022-09-12 114256" src="https://user-images.githubusercontent.com/99955484/189634603-d0c95e6d-5cb2-4a59-a2b4-98936be0a2e9.png">
 
+- Single
+```SQL
 --Contribution of marital status
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Single'))*100) as decimal(10,2)) as [Attrited Single Customers],
 100-(cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Single'))*100) as decimal(10,2))) as [Existing Single Customers]
 from Bankchurner
 where Marital_Status='Single'
 and Attrition_Flag='Attrited Customer'
+```
+*Output*
 
+<img width="257" alt="Annotation 2022-09-12 114413" src="https://user-images.githubusercontent.com/99955484/189634774-a2aeae4a-eded-4f9e-b702-40dfdd7044e9.png">
+
+- Unknown
+```SQL
 --Contribution of marital status
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Unknown'))*100) as decimal(10,2)) as [Attrited Customers with Marital status unknown],
 100-(cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Unknown'))*100) as decimal(10,2))) as [Existing Customers with marital status unknown]
 from Bankchurner
 where Marital_Status='Unknown'
 and Attrition_Flag='Attrited Customer'
+```
+*Output*
 
+<img width="398" alt="Annotation 2022-09-12 114538" src="https://user-images.githubusercontent.com/99955484/189635100-ac02d9f0-8681-487f-89d9-9b194a47b54b.png">
+
+- Divorced
+```SQL
 select cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Divorced'))*100) as decimal(10,2)) as [Attrited Divorced Customers],
 100-(cast(((cast(count(Marital_Status) as decimal(10,2))/(select count(Marital_Status) from Bankchurner where Marital_Status='Divorced'))*100) as decimal(10,2))) as [Existing Divorced Customers]
 from Bankchurner
@@ -105,13 +130,19 @@ and Attrition_Flag='Attrited Customer'
 ```
 *Output*
 
-<img width="451" alt="Annotation 2022-09-10 013823" src="https://user-images.githubusercontent.com/99955484/189461821-4742ebd9-e010-4796-8fc3-78196e3823e1.png">
+<img width="281" alt="Annotation 2022-09-12 114705" src="https://user-images.githubusercontent.com/99955484/189635312-f81ae8f9-7da2-4d5b-968b-7e4ab9f946f1.png">
 
 **Insights**
 - Account holders whose marital status are unknown seems to contribute more to attrition  
+- Single and Divorced customers shows high probability of churning as they seems to spend less on bills.
+- Married Customers on the other hand, shows a low probability of churning probably due to bills and other expenses.
 
 ### Card Category 
-Card category of an account holder can either be **Blue,Gold,Silver or Platinum**
+Card category of an account holder can either be: 
+- Blue
+- Gold
+- Silver *or*
+- Platinum
 
 **Which Card have the highest amount of holders?**
 ```SQL
@@ -246,7 +277,6 @@ and Attrition_Flag='Attrited Customer'
 
 **Insights**
 - Attrition seems to be directly proportional to eduacation level. As Education level decreases, Attrition decreases also.
--- 
 
 ### Income Category
 This section deals with how the annual income category of account holders affect attrition.
@@ -300,7 +330,7 @@ The age of customers in this datasets range from 26 to 73. Due to this large ran
 - <30
 - 30-40
 - 41-50
-- >50 
+- [>50] 
 
 I created a new columns called grouped age which stores the age category in which each age falls into. Below is the code used to craete this column.
 
