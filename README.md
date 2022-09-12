@@ -289,6 +289,115 @@ and Attrition_Flag='Attrited Customer'
 
 <img width="419" alt="Annotation 2022-09-11 045117" src="https://user-images.githubusercontent.com/99955484/189511659-821fdb95-5c65-4bcc-95c1-92b4ae50b401.png">
 
+### AGE
+Age is the length of time that a person has lived or a thing has existed. Overall spending tends to decrease as one gets older.
+
+The age of customers in this datasets range from 26 to 73. Due to this large range, i decided to group them into four categories 
+- 41-50
+- 30-40
+- <30
+- >50 
+
+I created a new columns called grouped age which stores the age category in which each age falls into. Below is the code used tO craete this column.
+
+```SQL
+
+--Grouping of age and knowing each group's contribution to attrition
+alter table Bankchurner
+add  [grouped age] varchar(20)
+
+update Bankchurner
+set [grouped age]= 
+(case when Customer_Age < 30 then '<30'
+when Customer_Age >=30 and Customer_Age <= 40 then '30-40'
+when Customer_Age >40 and Customer_Age <=50 then '41-50'
+else '>50' end) from Bankchurner
+```
+*Output*
+
+<img width="149" alt="Annotation 2022-09-12 032130" src="https://user-images.githubusercontent.com/99955484/189562777-280360fa-6667-4d74-b037-96131ed0b25c.png">
+
+##### How does each AAge category react to churning?
+**>50**
+
+```SQL
+--Age
+select cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='>50'))*100) as decimal(10,2)) as [Attrited Customers - >50],
+100-(cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='>50'))*100) as decimal(10,2))) as [Existing Customers - >50] 
+from Bankchurner
+where [grouped age]='>50'
+and Attrition_Flag='Attrited Customer'
+```
+
+**41-50**
+
+```SQL
+
+select cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='41-50'))*100) as decimal(10,2)) as [Attrited Customers 41-50],
+100-(cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='41-50'))*100) as decimal(10,2))) as [Existing Customers 41-50] 
+from Bankchurner
+where [grouped age]='41-50'
+and Attrition_Flag='Attrited Customer'
+```
+*output*
+
+<img width="340" alt="Annotation 2022-09-12 032617" src="https://user-images.githubusercontent.com/99955484/189563182-8b55aa9c-4365-43ba-861b-b8fc2582d4c0.png">
+
+**30-40**
+
+```SQL
+select cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='30-40'))*100) as decimal(10,2)) as [Attrited Customers - 30-40],
+100-(cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='30-40'))*100) as decimal(10,2))) as [Existing Customers - 30-40] 
+from Bankchurner
+where [grouped age]='30-40'
+and Attrition_Flag='Attrited Customer'
+```
+
+*output*
+
+<img width="277" alt="Annotation 2022-09-12 032737" src="https://user-images.githubusercontent.com/99955484/189563310-27b52b63-eff3-4236-b2d3-d90a84683250.png">
+
+**<30**
+
+```SQL
+select cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='<30'))*100) as decimal(10,2)) as [Attrited Customers - <30],
+100-(cast(((cast(count([grouped age]) as decimal(10,2))/(select count([grouped age]) from Bankchurner where [grouped age]='<30'))*100) as decimal(10,2))) as [Existing Customers - <30] 
+from Bankchurner
+where [grouped age]='<30'
+and Attrition_Flag='Attrited Customer'
+```
+
+*Output*
+
+<img width="253" alt="Annotation 2022-09-12 032942" src="https://user-images.githubusercontent.com/99955484/189563463-12dc211d-a628-48de-a62c-a0c250bc57b4.png">
+
+###### Insights
+
+
+### Dependent_Count vs Average Utilization Ratio.
+Dependent Count is the number of persons that relies on our account holder for financial support.
+
+Average utilization ratio  represents the relationship between your credit card balances and your credit card’s credit limits. it's calculated by dividing current balance by total credit card limit.
+
+##### How does dependent count affect card utilization ratio of attritred customers?
+
+```SQL
+ --Dependent_count vs avg_utilization_ratio 
+select Dependent_count ,AVG(Avg_Utilization_Ratio) Utilization
+from Bankchurner
+where Attrition_Flag='Attrited Customer' 
+GROUP BY Dependent_count 
+order by 1
+```
+
+*Output*
+
+<img width="231" alt="Annotation 2022-09-12 034138" src="https://user-images.githubusercontent.com/99955484/189564517-be8f216c-833e-402f-9795-3e091411b40e.png">
+
+
+
+
+
 
 
 
