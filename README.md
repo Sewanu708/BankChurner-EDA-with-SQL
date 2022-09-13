@@ -94,6 +94,7 @@ where Marital_Status='Married'
 and Attrition_Flag='Attrited Customer'
 ```
 *Output*
+
 <img width="281" alt="Annotation 2022-09-12 114256" src="https://user-images.githubusercontent.com/99955484/189634603-d0c95e6d-5cb2-4a59-a2b4-98936be0a2e9.png">
 
 - Single
@@ -278,6 +279,7 @@ and Attrition_Flag='Attrited Customer'
 <img width="323" alt="Annotation 2022-09-11 043603" src="https://user-images.githubusercontent.com/99955484/189511331-e2e296f0-c8e0-4c16-a0c3-4b974ae3aec0.png">
 
 **Insights**
+- Customers with Doctorate degree contributed the most to attrition.
 - Attrition seems to be directly proportional to eduacation level. As Education level decreases, Attrition decreases also.
 
 ### Income Category
