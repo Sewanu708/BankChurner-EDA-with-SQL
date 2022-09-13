@@ -353,7 +353,7 @@ else '>50' end) from Bankchurner
 
 <img width="149" alt="Annotation 2022-09-12 032130" src="https://user-images.githubusercontent.com/99955484/189562777-280360fa-6667-4d74-b037-96131ed0b25c.png">
 
-##### How does each AAge category react to churning?
+##### How does each age category react to churning?
 **>50**
 
 ```SQL
