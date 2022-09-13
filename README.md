@@ -195,7 +195,7 @@ from Bankchurner
 where Education_Level='Doctorate'
 and Attrition_Flag='Attrited Customer'
 ```
-*Output*
+*output*
 
 <img width="398" alt="Annotation 2022-09-11 042649" src="https://user-images.githubusercontent.com/99955484/189511100-a0f2d5f1-9931-451d-8a9d-d850728964c1.png">
 
@@ -362,6 +362,9 @@ from Bankchurner
 where [grouped age]='>50'
 and Attrition_Flag='Attrited Customer'
 ```
+*output*
+
+<img width="283" alt="Annotation 2022-09-13 004646" src="https://user-images.githubusercontent.com/99955484/189778859-a738c04f-832f-4099-b9e5-d67a2e351a82.png">
 
 **41-50**
 
@@ -405,8 +408,8 @@ and Attrition_Flag='Attrited Customer'
 
 <img width="253" alt="Annotation 2022-09-12 032942" src="https://user-images.githubusercontent.com/99955484/189563463-12dc211d-a628-48de-a62c-a0c250bc57b4.png">
 
-###### Insights
-
+**Insights**
+- There's a sharp increase in attrition as age increases. This is probably because most young individuals seems to spend more than adults
 
 ### Dependent_Count vs Average Utilization Ratio.
 Dependent Count is the number of persons that relies on our account holder for financial support.
@@ -429,8 +432,22 @@ order by 1
 <img width="231" alt="Annotation 2022-09-12 034138" src="https://user-images.githubusercontent.com/99955484/189564517-be8f216c-833e-402f-9795-3e091411b40e.png">
 
 
+**Insights**
+- Card utilization ratio increase as dependent count increases from 0 to 2
+- As dependent count increases from 3 to 5, utilization ratio decreases.
 
-
+## Conclusion
+- Account holders whose marital status are unknown seems to contribute more to attrition  
+- Single and Divorced customers shows high probability of churning as they seems to spend less on bills.
+- Married Customers on the other hand, shows a low probability of churning probably due to bills and other expenses.
+- Card utilization ratio increase as dependent count increases from 0 to 2
+- As dependent count increases from 3 to 5, utilization ratio decreases.
+- There's a sharp increase in attrition as age increases. This is probably because most young individuals seems to spend more than adults
+- Attrition seems to be directly proportional to eduacation level. As Education level decreases, Attrition decreases also.
+- Blue card category have more users compared to others
+- Blue card which is the most common card shows a very high contribution to Attrition while Platinum card shows the very least contiribution.
+- 16% of 10127 customers haved churned
+- The female gender contributed much more to attrition than the male gender and this shows that female gender are expected to churn more than the male gender.
 
 
 
