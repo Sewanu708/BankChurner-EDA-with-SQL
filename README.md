@@ -12,7 +12,7 @@ Behind the scene, I have my data loaded as **BankChurner** into a database calle
 *Overview of our dataset*
 <img width="941" alt="Annotation 2022-09-10 005111" src="https://user-images.githubusercontent.com/99955484/189459880-c8c9e846-385f-4cfd-a14b-c647fe6ce1bc.png">,<img width="850" alt="Annotation 2022-9-10 005149" src="https://user-images.githubusercontent.com/99955484/189459888-6ce999f6-0160-40d8-891a-fa1ca609af14.png">
  
- ***This dataset was downloaded from [Kaggle](https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers)
+ ***This dataset was downloaded from [Kaggle](https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers)***
  
 **Meaning of fields (useful for our analysis) in the table(BankChurner)**
 - **CLIENTNUM**: Client number. Unique identifier for the customer holding the account
@@ -445,9 +445,10 @@ order by 1
 - Single and Divorced customers shows high probability of churning as they seems to spend less on bills.
 - Married Customers on the other hand, shows a low probability of churning probably due to bills and other expenses.
 - Card utilization ratio increase as dependent count increases from 0 to 2
-- As dependent count increases from 3 to 5, utilization ratio decreases.
+- As dependent count increases from 3 to 5, utilization ratio decreases.Therefore,those with dependent count below 3 are likely to churn
 - There's a sharp increase in attrition as age increases. This is probably because most young individuals seems to spend more than adults
 - Attrition seems to be directly proportional to eduacation level. As Education level decreases, Attrition decreases also.
+- Doctorate degree holders are likely to churn
 - Blue card category have more users compared to others
 - Blue card which is the most common card shows a very high contribution to Attrition while Platinum card shows the very least contiribution.
 - The female gender contributed much more to attrition than the male gender and this shows that female gender are expected to churn more than the male gender.
